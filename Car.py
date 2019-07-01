@@ -18,15 +18,15 @@ class Car:
         "Fill attribute array"
         self.attrs = np.zeros(33)
         "Price"
-        if price < 16000:
+        if price < 20000:
             self.attrs[0] = 1
-        elif price < 20000:
-            self.attrs[1] = 1
-        elif price < 25000:
-            self.attrs[2] = 1
         elif price < 30000:
+            self.attrs[1] = 1
+        elif price < 40000:
+            self.attrs[2] = 1
+        elif price < 50000:
             self.attrs[3] = 1
-        elif price < 37500:
+        elif price < 60000:
             self.attrs[4] = 1
         else:
             raise Exception('Price not supported')
@@ -93,7 +93,7 @@ class Car:
             self.attrs[25] = 1
         elif wd == 'all':
             self.attrs[26] = 1
-        elif wd == '4':
+        elif wd == 'four':
             self.attrs[27] = 1
         else:
             raise Exception('Wheel Drive type not supported')
@@ -102,7 +102,7 @@ class Car:
             self.attrs[28] = 1
         elif make == 'hyundai':
             self.attrs[29] = 1
-        elif make == 'jeep':
+        elif make == 'ford':
             self.attrs[30] = 1
         elif make == 'mercedes':
             self.attrs[31] = 1
