@@ -26,17 +26,21 @@ def getBrowsingAttrs(n):
     "Returns list of n tuples (attr #, score) that comes from browsed cars and their respective times"
     cars = []  # get list of cars browsed
     times = np.array([])  # get arr of corresponding browsing times
+    # -------TEST VALUES-------
+    cars.append(Car(32500, 35, 'sedan', 'silver', 'gas', 188, 5, 'all', 'mercedes'))
+    times = np.array([1])
+    # -------TEST VALUES-------
     times = times / sum(times)
     attrs = np.zeros((len(cars), 33))
     i = 0
     while i < len(cars):
         attrs[i, :] = cars[i].getAttrs() * times[i]
         i += 1
-    sumArr = np.sum(a=attrs, axis=1)
+    sumArr = np.sum(a=attrs, axis=0)
     sortedInd = np.flip(np.argsort(sumArr), 0)
     bestAttrs = []
     i = 0
-    while i < n and sortedInd.size > 0:
+    while i < n and sortedInd.size > i:
         attrInd = sortedInd[i]
         bestAttrs.append((attrInd, sumArr[attrInd]))
         i += 1
