@@ -3,8 +3,9 @@ import numpy as np
 class Car:
     "Represents a Car object"
 
-    def __init__(self, price, mpg, size, color, ftype, hp, seats, wd, make):
+    def __init__(self, name, price, mpg, size, color, ftype, hp, seats, wd, make):
         "Fill attributes"
+        self.name = name
         self.price = price
         self.mpg = mpg
         self.size = size
@@ -111,5 +112,9 @@ class Car:
         else:
             raise Exception('Make not supported')
 
+    #should we make vars private??
     def getAttrs(self):
         return self.attrs
+
+    def getName(self):
+        return self.name

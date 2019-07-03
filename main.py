@@ -1,15 +1,16 @@
 import numpy as np
 from Car import Car
 
+cars = []
+
 def importCars():
     "Returns a list of all cars that will be used"
-    cars = []
     #car0: 2019 Mercedes A class sedan
-    cars.append(Car(32500, 35, 'sedan', 'silver', 'gas', 188, 5, 'all', 'mercedes'))
+    cars.append(Car('2019 Mercedes A class sedan', 32500, 35, 'sedan', 'silver', 'gas', 188, 5, 'all', 'mercedes'))
     # car1: 2019 Audi RS3
-    cars.append(Car(56200, 28, 'sports', 'red', 'gas', 394, 5, 'all', 'audi'))
+    cars.append(Car('2019 Audi RS3', 56200, 28, 'sports', 'red', 'gas', 394, 5, 'all', 'audi'))
     # car2: Ford F-150 XL
-    cars.append(Car(29300, 26, 'truck', 'silver', 'gas', 325, 5, 'four', 'ford'))
+    cars.append(Car('Ford F-150 XL', 29300, 26, 'truck', 'silver', 'gas', 325, 5, 'four', 'ford'))
 
     return cars
 
@@ -27,7 +28,7 @@ def getBrowsingAttrs(n):
     cars = []  # get list of cars browsed
     times = np.array([])  # get arr of corresponding browsing times
     # -------TEST VALUES-------
-    cars.append(Car(32500, 35, 'sedan', 'silver', 'gas', 188, 5, 'all', 'mercedes'))
+    cars.append(Car('2019 Mercedes A class sedan', 32500, 35, 'sedan', 'silver', 'gas', 188, 5, 'all', 'mercedes'))
     times = np.array([1])
     # -------TEST VALUES-------
     times = times / sum(times)
@@ -50,10 +51,10 @@ def getPrefArr(attrs2boost):
     "Returns an array of the weighted preferences associated with each attribute (prefArr.len=33)"
     wp = np.zeros(33)
     # -------TEST VALUES-------
-    wp[2] = 2
-    wp[7] = 1
-    wp[8] = 1
-    wp[13] = 1
+    wp[2] = 2  # price 30<x<40
+    wp[7] = 1  # mpg 30<x<40
+    wp[8] = 1  # size = sedan
+    wp[13] = 1 # color = red
     # -------TEST VALUES-------
     #check scores of attrs2boost to only boost attrs with scores > .5
     for attr in attrs2boost:
@@ -90,7 +91,9 @@ def main():
     prefArr = getPrefArr(attrs2boost)
     scoreArray = getScoreArray(attrMatrix, prefArr)
     bestCarsList = getBestCars(scoreArray, 3)
-    print(bestCarsList)
+    #print(bestCarsList)
+    for car in bestCarsList:
+        print("%s is a %.1f%% match" %(cars[car[0]].name, car[1]*100))
 
 if __name__ == '__main__':
     main()
