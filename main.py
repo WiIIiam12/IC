@@ -93,7 +93,7 @@ def main():
     bestCarsList = getBestCars(scoreArray, 3)
     # print(bestCarsList)
     for car in bestCarsList:
-        print("%s is a %.1f%% match" %(cars[car[0]].name, car[1]*100))
+        print("%s-%.1f%%" %(cars[car[0]].name, car[1]*100))
 
 
 if __name__ == '__main__':
