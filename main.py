@@ -2,6 +2,7 @@ import numpy as np
 from Car import Car
 
 cars = []
+ARRAY_SIZE = 33
 
 def importCars():
     """"Returns a list of all cars that will be used"""
@@ -15,8 +16,9 @@ def importCars():
     return cars
 
 def createAttrMatrix(carsList):
-    """"Returns a 2d array where each column is the attribute list of a car, so rows=33 and columns=carsList.len"""
-    attrMatrix = np.zeros((33, len(carsList)))
+    """"Returns a 2d array where each column is the attribute list of a car,
+    so rows=ARRAY_SIZE and columns=carsList.len"""
+    attrMatrix = np.zeros((ARRAY_SIZE, len(carsList)))
     i = 0
     while i < len(carsList):
         attrMatrix[:, i] = np.transpose(carsList[i].getAttrs())
@@ -32,7 +34,7 @@ def getBrowsingAttrs(n):
     times = np.array([1])
     # -------TEST VALUES-------
     times = np.divide(times, sum(times))
-    attrs = np.zeros((len(cars), 33))
+    attrs = np.zeros((len(cars), ARRAY_SIZE))
     i = 0
     while i < len(cars):
         attrs[i, :] = cars[i].getAttrs() * times[i]
@@ -48,8 +50,8 @@ def getBrowsingAttrs(n):
     return bestAttrs
 
 def getPrefArr(attrs2boost):
-    """"Returns an array of the weighted preferences associated with each attribute (prefArr.len=33)"""
-    wp = np.zeros(33)
+    """"Returns an array of the weighted preferences associated with each attribute (prefArr.len=ARRAY_SIZE)"""
+    wp = np.zeros(ARRAY_SIZE)
     # -------TEST VALUES-------
     wp[2] = 2  # price 30<x<40
     wp[7] = 1  # mpg 30<x<40

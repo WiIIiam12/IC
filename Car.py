@@ -19,96 +19,105 @@ class Car:
         "Fill attribute array"
         self.attrs = np.zeros(33)
         "Price"
+        count = 0  # 0
         if price < 20000:
-            self.attrs[0] = 1
+            self.attrs[count] = 1
         elif price < 30000:
-            self.attrs[1] = 1
+            self.attrs[count+1] = 1
         elif price < 40000:
-            self.attrs[2] = 1
+            self.attrs[count+2] = 1
         elif price < 50000:
-            self.attrs[3] = 1
+            self.attrs[count+3] = 1
         elif price < 60000:
-            self.attrs[4] = 1
+            self.attrs[count+4] = 1
         else:
             raise Exception('Price not supported')
         "MPG"
+        count += 5  # 5
         if mpg < 20:
-            self.attrs[5] = 1
+            self.attrs[count] = 1
         elif mpg < 30:
-            self.attrs[6] = 1
+            self.attrs[count+1] = 1
         elif mpg < 40:
-            self.attrs[7] = 1
+            self.attrs[count+2] = 1
         else:
             raise Exception('MPG not supported')
         "Size"
+        count += 3  # 8
         if size == 'sedan':
-            self.attrs[8] = 1
+            self.attrs[count] = 1
         elif size == 'sports':
-            self.attrs[9] = 1
+            self.attrs[count+1] = 1
         elif size == 'van':
-            self.attrs[10] = 1
+            self.attrs[count+2] = 1
         elif size == 'suv':
-            self.attrs[11] = 1
+            self.attrs[count+3] = 1
         elif size == 'truck':
-            self.attrs[12] = 1
+            self.attrs[count+4] = 1
         else:
             raise Exception('Size not supported')
         "Color"
+        count += 5  # 13
         if color == 'red':
-            self.attrs[13] = 1
+            self.attrs[count] = 1
         elif color == 'black':
-            self.attrs[14] = 1
+            self.attrs[count+1] = 1
         elif color == 'silver':
-            self.attrs[15] = 1
+            self.attrs[count+2] = 1
         else:
             raise Exception('Color not supported')
         "Engine Fuel Type"
+        count += 3  # 16
         if ftype == 'gas':
-            self.attrs[16] = 1
+            self.attrs[count] = 1
         elif ftype == 'electric':
-            self.attrs[17] = 1
+            self.attrs[count+1] = 1
         elif ftype == 'diesel':
-            self.attrs[18] = 1
+            self.attrs[count+2] = 1
         else:
             raise Exception('Fuel type not supported')
         "Horsepower"
+        count += 3  # 19
         if hp < 300:
-            self.attrs[19] = 1
+            self.attrs[count] = 1
         elif hp < 500:
-            self.attrs[20] = 1
+            self.attrs[count+1] = 1
         else:
             raise Exception('Horsepower type not supported')
         "Seats"
+        count += 2  # 21
         if seats <= 4:
-            self.attrs[21] = 1
+            self.attrs[count] = 1
         elif seats == 5:
-            self.attrs[22] = 1
+            self.attrs[count+1] = 1
         elif seats <= 7:
-            self.attrs[23] = 1
+            self.attrs[count+2] = 1
         else:
             raise Exception('MPG not supported')
         "Wheel Drive"
+        count += 3  # 24
         if wd == 'front':
-            self.attrs[24] = 1
+            self.attrs[count] = 1
         elif wd == 'rear':
-            self.attrs[25] = 1
+            self.attrs[count+1] = 1
         elif wd == 'all':
-            self.attrs[26] = 1
+            self.attrs[count+2] = 1
         elif wd == 'four':
-            self.attrs[27] = 1
+            self.attrs[count+3] = 1
         else:
             raise Exception('Wheel Drive type not supported')
         "Make"
+        count += 4  # 28
         if make == 'audi':
-            self.attrs[28] = 1
+            self.attrs[count] = 1
         elif make == 'hyundai':
-            self.attrs[29] = 1
+            self.attrs[count+1] = 1
         elif make == 'ford':
-            self.attrs[30] = 1
+            self.attrs[count+2] = 1
         elif make == 'mercedes':
-            self.attrs[31] = 1
+            self.attrs[count+3] = 1
         elif make == 'toyota':
-            self.attrs[32] = 1
+            self.attrs[count+4] = 1
         else:
             raise Exception('Make not supported')
 
