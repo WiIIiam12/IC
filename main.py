@@ -3,7 +3,7 @@ from Car import Car
 import pandas as pd
 
 cars = []
-ARRAY_SIZE = 42
+ARRAY_SIZE = 43
 
 def importCars():
     """"Returns a list of all cars that will be used"""

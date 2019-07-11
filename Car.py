@@ -17,7 +17,7 @@ class Car:
         self.make = make
 
         "Fill attribute array"
-        self.attrs = np.zeros(42)
+        self.attrs = np.zeros(43)
         "Price"
         count = 0
         if price < 20000:
@@ -41,7 +41,7 @@ class Car:
         else:
             raise Exception('Price not supported')
         "MPG"
-        count += 10
+        count += 9
         if mpg < 20:
             self.attrs[count] = 1
         elif mpg < 30:
