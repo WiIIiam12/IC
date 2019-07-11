@@ -1,18 +1,35 @@
 import numpy as np
 from Car import Car
+import pandas as pd
 
 cars = []
 ARRAY_SIZE = 33
 
 def importCars():
     """"Returns a list of all cars that will be used"""
-    # car0: 2019 Mercedes A class sedan
-    cars.append(Car('2019 Mercedes A class sedan', 32500, 35, 'sedan', 'silver', 'gas', 188, 5, 'all', 'mercedes'))
-    # car1: 2019 Audi RS3
-    cars.append(Car('2019 Audi RS3', 56200, 28, 'sports', 'red', 'gas', 394, 5, 'all', 'audi'))
-    # car2: Ford F-150 XL
-    cars.append(Car('Ford F-150 XL', 29300, 26, 'truck', 'silver', 'gas', 325, 5, 'four', 'ford'))
+    # # car0: 2019 Mercedes A class sedan
+    # cars.append(Car('2019 Mercedes A class sedan', 32500, 35, 'sedan', 'silver', 'gas', 188, 5, 'all', 'mercedes'))
+    # # car1: 2019 Audi RS3
+    # cars.append(Car('2019 Audi RS3', 56200, 28, 'sports', 'red', 'gas', 394, 5, 'all', 'audi'))
+    # # car2: Ford F-150 XL
+    # cars.append(Car('Ford F-150 XL', 29300, 26, 'truck', 'silver', 'gas', 325, 5, 'four', 'ford'))
 
+    df = pd.read_excel('CarData.xlsx', sheet_name='Sheet1')
+    names = df['Name']
+    price = df['Price']
+    hwyMPG = df['Highway MPG']
+    size = df['Size']
+    color = df['Color']
+    fuel = df['Engine Fuel Type']
+    hp = df['Horsepower']
+    seats = df['Seats']
+    wd = df['Wheel Drive']
+    make = df['Make']
+    carsNumber = len(names)
+    i = 0
+    while i < carsNumber:
+        cars.append(Car(names[i], price[i], hwyMPG[i], size[i], color[i], fuel[i], hp[i], seats[i], wd[i], make[i]))
+        i += 1
     return cars
 
 def createAttrMatrix(carsList):
@@ -27,17 +44,39 @@ def createAttrMatrix(carsList):
 
 def getBrowsingAttrs(n):
     """Returns list of n tuples (attr #, score) that comes from browsed cars and their respective times"""
-    cars = []  # get list of cars browsed
-    times = np.array([])  # get arr of corresponding browsing times
-    # -------TEST VALUES-------
-    cars.append(Car('2019 Mercedes A class sedan', 32500, 35, 'sedan', 'silver', 'gas', 188, 5, 'all', 'mercedes'))
-    times = np.array([1])
-    # -------TEST VALUES-------
-    times = np.divide(times, sum(times))
-    attrs = np.zeros((len(cars), ARRAY_SIZE))
+    # browsedCars = []  # get list of cars browsed
+    # times = np.array([])  # get arr of corresponding browsing times
+    # # -------TEST VALUES-------
+    # browsedCars.append(Car('2019 Mercedes A class sedan', 32500, 35, 'sedan', 'silver', 'gas', 188, 5, 'all', 'mercedes'))
+    # times = np.array([1])
+    # # -------TEST VALUES-------
+    browsedCars = []
+    times = []
+    # read in file
+    df = pd.read_excel('BrowsingAttrs.xlsx', sheet_name='Sheet1')
+    names = df['Name']
+    price = df['Price']
+    hwyMPG = df['Highway MPG']
+    size = df['Size']
+    color = df['Color']
+    fuel = df['Engine Fuel Type']
+    hp = df['Horsepower']
+    seats = df['Seats']
+    wd = df['Wheel Drive']
+    make = df['Make']
+    timesList = df['Time']
+    carsNumber = len(names)
     i = 0
-    while i < len(cars):
-        attrs[i, :] = cars[i].getAttrs() * times[i]
+    while i < carsNumber:
+        browsedCars.append(Car(names[i], price[i], hwyMPG[i], size[i], color[i], fuel[i], hp[i], seats[i], wd[i], make[i]))
+        times.append(timesList[i])
+        i += 1
+    # do calculations
+    times = np.divide(times, sum(times))
+    attrs = np.zeros((len(browsedCars), ARRAY_SIZE))
+    i = 0
+    while i < len(browsedCars):
+        attrs[i, :] = browsedCars[i].getAttrs() * times[i]
         i += 1
     sumArr = np.sum(a=attrs, axis=0)
     sortedInd = np.flip(np.argsort(sumArr), 0)
@@ -51,13 +90,15 @@ def getBrowsingAttrs(n):
 
 def getPrefArr(attrs2boost):
     """"Returns an array of the weighted preferences associated with each attribute (prefArr.len=ARRAY_SIZE)"""
-    wp = np.zeros(ARRAY_SIZE)
-    # -------TEST VALUES-------
-    wp[2] = 2  # price 30<x<40
-    wp[7] = 1  # mpg 30<x<40
-    wp[8] = 1  # size = sedan
-    wp[13] = 1 # color = red
-    # -------TEST VALUES-------
+    # wp = np.zeros(ARRAY_SIZE)
+    # # -------TEST VALUES-------
+    # wp[2] = 2  # price 30<x<40
+    # wp[7] = 1  # mpg 30<x<40
+    # wp[8] = 1  # size = sedan
+    # wp[13] = 1 # color = red
+    # # -------TEST VALUES-------
+    df = pd.read_excel('PrefArr.xlsx', sheet_name='Sheet1')
+    wp = df['Attributes']
     # check scores of attrs2boost to only boost attrs with scores > .5
     for attr in attrs2boost:
         if attr[1] > .5:
