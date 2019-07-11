@@ -17,23 +17,31 @@ class Car:
         self.make = make
 
         "Fill attribute array"
-        self.attrs = np.zeros(33)
+        self.attrs = np.zeros(42)
         "Price"
-        count = 0  # 0
+        count = 0
         if price < 20000:
             self.attrs[count] = 1
-        elif price < 30000:
+        elif price < 25000:
             self.attrs[count+1] = 1
-        elif price < 40000:
+        elif price < 30000:
             self.attrs[count+2] = 1
-        elif price < 50000:
+        elif price < 35000:
             self.attrs[count+3] = 1
-        elif price < 60000:
+        elif price < 40000:
             self.attrs[count+4] = 1
+        elif price < 45000:
+            self.attrs[count+5] = 1
+        elif price < 50000:
+            self.attrs[count+6] = 1
+        elif price < 55000:
+            self.attrs[count+7] = 1
+        elif price < 60000:
+            self.attrs[count+8] = 1
         else:
             raise Exception('Price not supported')
         "MPG"
-        count += 5  # 5
+        count += 10
         if mpg < 20:
             self.attrs[count] = 1
         elif mpg < 30:
@@ -43,7 +51,7 @@ class Car:
         else:
             raise Exception('MPG not supported')
         "Size"
-        count += 3  # 8
+        count += 3
         if size == 'sedan':
             self.attrs[count] = 1
         elif size == 'sports':
@@ -57,17 +65,21 @@ class Car:
         else:
             raise Exception('Size not supported')
         "Color"
-        count += 5  # 13
+        count += 5
         if color == 'red':
             self.attrs[count] = 1
         elif color == 'black':
             self.attrs[count+1] = 1
         elif color == 'silver':
             self.attrs[count+2] = 1
+        elif color == 'blue':
+            self.attrs[count+3] = 1
+        elif color == 'white':
+            self.attrs[count+4] = 1
         else:
             raise Exception('Color not supported')
         "Engine Fuel Type"
-        count += 3  # 16
+        count += 5
         if ftype == 'gas':
             self.attrs[count] = 1
         elif ftype == 'electric':
@@ -77,15 +89,19 @@ class Car:
         else:
             raise Exception('Fuel type not supported')
         "Horsepower"
-        count += 3  # 19
-        if hp < 300:
+        count += 3
+        if hp < 200:
             self.attrs[count] = 1
-        elif hp < 500:
+        elif hp < 300:
             self.attrs[count+1] = 1
+        elif hp < 400:
+            self.attrs[count+2] = 1
+        elif hp < 500:
+            self.attrs[count+3] = 1
         else:
             raise Exception('Horsepower type not supported')
         "Seats"
-        count += 2  # 21
+        count += 4
         if seats <= 4:
             self.attrs[count] = 1
         elif seats == 5:
@@ -95,7 +111,7 @@ class Car:
         else:
             raise Exception('MPG not supported')
         "Wheel Drive"
-        count += 3  # 24
+        count += 3
         if wd == 'front':
             self.attrs[count] = 1
         elif wd == 'rear':
@@ -107,7 +123,7 @@ class Car:
         else:
             raise Exception('Wheel Drive type not supported')
         "Make"
-        count += 4  # 28
+        count += 4
         if make == 'audi':
             self.attrs[count] = 1
         elif make == 'hyundai':
