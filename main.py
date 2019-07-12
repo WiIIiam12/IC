@@ -3,7 +3,7 @@ from Car import Car
 import pandas as pd
 
 cars = []
-ARRAY_SIZE = 44
+ARRAY_SIZE = 47
 
 def importCars():
     """"Returns a list of all cars that will be used"""
@@ -93,10 +93,10 @@ def getPrefArr(attrs2boost):
     # wp = np.zeros(ARRAY_SIZE)
     # # -------TEST VALUES-------
     # wp[3] = 2   # price 30<x<35
-    # wp[11] = 1  # mpg 30<x<35
-    # wp[12] = 1  # mpg 35<x<40
-    # wp[14] = 1  # size = sedan
-    # wp[19] = 1  # color = red
+    # wp[12] = 1  # mpg 30<x<35
+    # wp[13] = 1  # mpg 35<x<40
+    # wp[18] = 1  # size = sedan
+    # wp[23] = 1  # color = red
     # # -------TEST VALUES-------
     df = pd.read_excel('PrefArr.xlsx', sheet_name='Sheet1')
     wp = df['Attributes']

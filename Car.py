@@ -17,7 +17,7 @@ class Car:
         self.make = make
 
         "Fill attribute array"
-        self.attrs = np.zeros(44)
+        self.attrs = np.zeros(47)
         "Price"
         count = 0
         if price < 20000:
@@ -44,14 +44,26 @@ class Car:
         count += 9
         if mpg < 20:
             self.attrs[count] = 1
-        elif mpg < 30:
+        elif mpg < 25:
             self.attrs[count+1] = 1
-        elif mpg < 40:
+        elif mpg < 30:
             self.attrs[count+2] = 1
+        elif mpg < 35:
+            self.attrs[count+3] = 1
+        elif mpg < 40:
+            self.attrs[count+4] = 1
+        elif mpg < 45:
+            self.attrs[count+5] = 1
+        elif mpg < 50:
+            self.attrs[count+6] = 1
+        elif mpg < 55:
+            self.attrs[count+7] = 1
+        elif mpg < 60:
+            self.attrs[count+8] = 1
         else:
             raise Exception('MPG not supported')
         "Size"
-        count += 3
+        count += 9
         if size == 'sedan':
             self.attrs[count] = 1
         elif size == 'sports':
@@ -82,16 +94,14 @@ class Car:
         count += 5
         if ftype == 'gas':
             self.attrs[count] = 1
-        elif ftype == 'electric':
-            self.attrs[count+1] = 1
         elif ftype == 'hybrid':
-            self.attrs[count+2] = 1
+            self.attrs[count+1] = 1
         elif ftype == 'diesel':
-            self.attrs[count+3] = 1
+            self.attrs[count+2] = 1
         else:
             raise Exception('Fuel type not supported')
         "Horsepower"
-        count += 4
+        count += 3
         if hp < 200:
             self.attrs[count] = 1
         elif hp < 300:
