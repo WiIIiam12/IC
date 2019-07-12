@@ -98,8 +98,13 @@ def getPrefArr(attrs2boost):
     # wp[18] = 1  # size = sedan
     # wp[23] = 1  # color = red
     # # -------TEST VALUES-------
-    df = pd.read_excel('PrefArr.xlsx', sheet_name='Sheet1')
-    wp = df['Attributes']
+    df = pd.read_csv('preferences.csv')
+    wp = []
+    for item in df:
+        temp = [0] * df[item][0]
+        temp[df[item][1]] = 1
+        wp += temp
+
     # check scores of attrs2boost to only boost attrs with scores > .5
     for attr in attrs2boost:
         if attr[1] > .5:
@@ -139,6 +144,15 @@ def main():
     for car in bestCarsList:
         print("%s-%.1f%%" %(cars[car[0]].name, car[1]*100))
 
+def test():
+    df = pd.read_csv('preferences.csv')
+    mainlist = []
+    for item in df:
+        temp = [0] * df[item][0]
+        temp[df[item][1]] = 1
+        mainlist += temp
+
 
 if __name__ == '__main__':
     main()
+    # test()
