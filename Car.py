@@ -118,7 +118,7 @@ class Car:
             self.attrs[count] = 1
         elif seats == 5:
             self.attrs[count+1] = 1
-        elif seats <= 7:
+        elif seats <= 8:
             self.attrs[count+2] = 1
         else:
             raise Exception('MPG not supported')
