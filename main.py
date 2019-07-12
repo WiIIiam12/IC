@@ -104,6 +104,7 @@ def getPrefArr(attrs2boost):
         temp = [0] * df[item][0]
         temp[df[item][1]] = 1
         wp += temp
+    wp = np.asarray(wp)
 
     # check scores of attrs2boost to only boost attrs with scores > .5
     for attr in attrs2boost:
@@ -151,6 +152,7 @@ def test():
         temp = [0] * df[item][0]
         temp[df[item][1]] = 1
         mainlist += temp
+    print(len(mainlist))
 
 
 if __name__ == '__main__':
