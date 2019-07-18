@@ -98,11 +98,14 @@ def getPrefArr(attrs2boost):
     # wp[18] = 1  # size = sedan
     # wp[23] = 1  # color = red
     # # -------TEST VALUES-------
-    df = pd.read_csv('preferences.csv')
+    import sys
+    userID = sys.argv[1]
+    df = pd.read_csv('preferences/' + userID + '.csv')
     wp = []
     for item in df:
         temp = [0] * df[item][0]
-        temp[df[item][1]] = 1
+        if df[item][1] != -1:
+            temp[df[item][1]] = 1
         wp += temp
     wp = np.asarray(wp)
 
