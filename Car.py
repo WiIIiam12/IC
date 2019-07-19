@@ -17,31 +17,31 @@ class Car:
         self.make = make
 
         "Fill attribute array"
-        self.attrs = np.zeros(47)
+        self.attrs = np.zeros(38)
         "Price"
         count = 0
-        if price < 20000:
-            self.attrs[count] = 1
-        elif price < 25000:
-            self.attrs[count+1] = 1
-        elif price < 30000:
-            self.attrs[count+2] = 1
-        elif price < 35000:
-            self.attrs[count+3] = 1
-        elif price < 40000:
-            self.attrs[count+4] = 1
-        elif price < 45000:
-            self.attrs[count+5] = 1
-        elif price < 50000:
-            self.attrs[count+6] = 1
-        elif price < 55000:
-            self.attrs[count+7] = 1
-        elif price < 60000:
-            self.attrs[count+8] = 1
-        else:
-            raise Exception('Price not supported')
+        # if price < 20000:
+        #     self.attrs[count] = 1
+        # elif price < 25000:
+        #     self.attrs[count+1] = 1
+        # elif price < 30000:
+        #     self.attrs[count+2] = 1
+        # elif price < 35000:
+        #     self.attrs[count+3] = 1
+        # elif price < 40000:
+        #     self.attrs[count+4] = 1
+        # elif price < 45000:
+        #     self.attrs[count+5] = 1
+        # elif price < 50000:
+        #     self.attrs[count+6] = 1
+        # elif price < 55000:
+        #     self.attrs[count+7] = 1
+        # elif price < 60000:
+        #     self.attrs[count+8] = 1
+        # else:
+        #     raise Exception('Price not supported', price)
         "MPG"
-        count += 9
+        # count += 9
         if mpg < 20:
             self.attrs[count] = 1
         elif mpg < 25:
@@ -61,7 +61,7 @@ class Car:
         elif mpg < 60:
             self.attrs[count+8] = 1
         else:
-            raise Exception('MPG not supported')
+            raise Exception('MPG not supported', mpg)
         "Size"
         count += 9
         if size == 'sedan':
@@ -75,7 +75,7 @@ class Car:
         elif size == 'truck':
             self.attrs[count+4] = 1
         else:
-            raise Exception('Size not supported')
+            raise Exception('Size not supported', size)
         "Color"
         count += 5
         if color == 'red':
@@ -89,7 +89,7 @@ class Car:
         elif color == 'white':
             self.attrs[count+4] = 1
         else:
-            raise Exception('Color not supported')
+            raise Exception('Color not supported', color)
         "Engine Fuel Type"
         count += 5
         if ftype == 'gas':
@@ -99,7 +99,7 @@ class Car:
         elif ftype == 'diesel':
             self.attrs[count+2] = 1
         else:
-            raise Exception('Fuel type not supported')
+            raise Exception('Fuel type not supported', ftype)
         "Horsepower"
         count += 3
         if hp < 200:
@@ -111,7 +111,7 @@ class Car:
         elif hp < 500:
             self.attrs[count+3] = 1
         else:
-            raise Exception('Horsepower type not supported')
+            raise Exception('Horsepower type not supported', hp)
         "Seats"
         count += 4
         if seats <= 4:
@@ -121,7 +121,7 @@ class Car:
         elif seats <= 8:
             self.attrs[count+2] = 1
         else:
-            raise Exception('MPG not supported')
+            raise Exception('Seats not supported', seats)
         "Wheel Drive"
         count += 3
         if wd == 'front':
@@ -133,7 +133,7 @@ class Car:
         elif wd == 'four':
             self.attrs[count+3] = 1
         else:
-            raise Exception('Wheel Drive type not supported')
+            raise Exception('Wheel Drive type not supported', wd)
         "Make"
         count += 4
         if make == 'audi':
@@ -147,7 +147,7 @@ class Car:
         elif make == 'toyota':
             self.attrs[count+4] = 1
         else:
-            raise Exception('Make not supported')
+            raise Exception('Make not supported', make)
 
     #should we make vars private??
     def getAttrs(self):

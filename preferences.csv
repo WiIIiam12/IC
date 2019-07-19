@@ -1,3 +1,3 @@
-Price,MPG,Size,Color,Engine Fuel Type,HorsePower,Seats,Wheel Drive,Make
-9,9,5,5,3,4,3,4,5
-5,8,4,4,2,3,2,3,4
+MPG,Size,Color,Engine Fuel Type,HorsePower,Seats,Wheel Drive,Make
+9,5,5,3,4,3,4,5
+4,0,2,0,0,1,2,3

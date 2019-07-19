@@ -3,7 +3,7 @@ from Car import Car
 import pandas as pd
 
 cars = []
-ARRAY_SIZE = 47
+ARRAY_SIZE = 38
 
 def importCars():
     """"Returns a list of all cars that will be used"""
@@ -98,14 +98,11 @@ def getPrefArr(attrs2boost):
     # wp[18] = 1  # size = sedan
     # wp[23] = 1  # color = red
     # # -------TEST VALUES-------
-    import sys
-    userID = sys.argv[1]
-    df = pd.read_csv('preferences/' + userID + '.csv')
+    df = pd.read_csv('preferences.csv')
     wp = []
     for item in df:
         temp = [0] * df[item][0]
-        if df[item][1] != -1:
-            temp[df[item][1]] = 1
+        temp[df[item][1]] = 1
         wp += temp
     wp = np.asarray(wp)
 
@@ -115,7 +112,8 @@ def getPrefArr(attrs2boost):
             wp[attr[0]] += 1
 
     """"""""""""""""""""""""""""""""""""
-    wp = np.divide(wp, sum(abs(wp)))
+    #wp = np.divide(wp, sum(abs(wp)))
+    wp = np.divide(wp, 8+len(attrs2boost))
     return wp
 
 def getScoreArray(attrMatrix, prefArr):
